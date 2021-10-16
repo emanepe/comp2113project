@@ -1,7 +1,5 @@
 # comp2113project
-#include <iostream>
-#include <cstdlib>
-#include <string>
-  
+Minjae Jo 3035742712
+Jong Seung Lee 
   
   
