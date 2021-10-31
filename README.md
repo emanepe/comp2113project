@@ -2,7 +2,7 @@
 Minjae Jo 3035742712
 Jong Seung Lee 3035555547
   
-**Typing game Brief Description**
+**Typing Game Brief Description**
    - The game is aimed to improve the typing speed for the random words and the reaction speed.
 
 **Rules**
