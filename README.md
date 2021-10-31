@@ -8,6 +8,7 @@ Typing game
    - The game is aimed to improve the typing speed for the random words and the reaction speed.
 
 **Rules**
+
 Input
    - File Input
      - Dictionary including words
