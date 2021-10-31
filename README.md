@@ -17,6 +17,7 @@ Code Requirements 1 ~ 5
   - function for marking the score, accuracy, typing speed, score, accuracy and highest typing speed can be browsed if user type 'userscore'
   - exit each session if user type 'q' after the game
   - time limit adjustment for difficulties
+      - On a scale of 1 ~ 3, will generate words in a different speed 
 
 * cannot use any library that needs to be downloaded from internet
 * need to be complied to academy server
