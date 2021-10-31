@@ -2,11 +2,8 @@
 Minjae Jo 3035742712
 Jong Seung Lee 3035555547
   
-Typing game
-
-**Brief Description**
+**Typing game Brief Description**
    - The game is aimed to improve the typing speed for the random words and the reaction speed.
-
 
 **Rules**
 
@@ -23,7 +20,6 @@ Input
      - Player also have to specify level (three different levels: hard, medium, easy)
      - Input Format : "startgame #level #length #alphabets"
 
-
 Data Structure/Functions
   - Data structure recording the highest score or correct-streak
      - Store value as in array or class-set up
@@ -32,7 +28,6 @@ Data Structure/Functions
   - Function for termination condition - time limit adjustment for difficulties
       - On a scale of 1 to 3 (hard, medium, easy), user would have different time limits.
 
-  
 Output
    - Output within a program
      - Words for the game
@@ -41,12 +36,10 @@ Output
    - Output to File
      - Score highest scores, accuracy, and speed if it is higher than the value stored in the file.
 
-  
 Game Termination Conditions
    - Must type each character correctly. If user fail to maintain certain level of accuracy will lose.
    - Must follow the time limit or will lose.
    - Exit the session if user type 'q' after the game.
-  
 
 Restriction
 * cannot use any library that needs to be downloaded from internet.
