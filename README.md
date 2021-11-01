@@ -16,7 +16,7 @@ Input
        - Higest Speed
    - User Input for searching words
      - Player might input a integer for the length of the string that user has to type. (If the user types 5, the string that the user has to type would be e.g.) apple)
-     - Player might input speicific alphabets (e.g.) 'a', 'b', 'c' and so on)
+     - Player might input specific alphabets (e.g.) 'a', 'b', 'c' and so on)
      - Player also have to specify level (three different levels: hard, medium, easy)
      - Input Format : "startgame #level #length #alphabets"
 
