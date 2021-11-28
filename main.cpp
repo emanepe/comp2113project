@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <time.h>
 #include <string.h>
+#include <chrono>
 #include "gamefunc.h"
 
 using namespace std;
