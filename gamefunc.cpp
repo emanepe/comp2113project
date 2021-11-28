@@ -52,10 +52,28 @@ void savedrecord(){
 }
 
 //sets time limit for playing game
-void sett(){
-	
+void set_time() {
+	int ch;
+	system("cls");
+	pos;
+	printf("Set the difficulty(time):");
+	pos;
+	ln
+	pos;
+	pos;
+	printf("press 1 for Easy") ;pos;
+	printf("press 2 for Medium"); pos;
+	printf("press 3 for Hard");pos;
+	printf("press 4 for Extremely Hard");pos;
+	scanf("%d",&ch);
+	switch(ch){
+		case 1:t=30;break;
+		case 2:t=20;break;
+		case 3:t=10;break;
+		case 4:t=5;break;
+		default:set_time();
+	}
 }
-
 
 void deletesave(){
 
