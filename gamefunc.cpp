@@ -13,7 +13,17 @@ void accuracy(){
 
 //function to measure user typing speed
 void typingspeed(){
+  using Clock = std::chrono::high_resolution_clock;
+  cout << "Type: ";
+  cin >> string answer;
+  auto start = Clock::now();
+  cin >> answer;
 
+  auto end = Clock::now();
+  auto s = chrono::duration_cast<chrono::seconds>(end - start).count();
+
+  cout << "You took " << s << " seconds" << endl;
+}
 }
 
 //help() is to show the instructions of the game
