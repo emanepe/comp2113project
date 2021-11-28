@@ -76,7 +76,23 @@ void game(){
   }
   system("cls");
   cout << "Select numbers of words you want to challenge:" << endl;
-  while()
+  while(){
+		//Actual game
+	}
+	
+	system("cls");
+	cout<<"Game Over"<<endl;
+	fp = fopen("score.txt", "a"); // 점수 저장 파일 열기
+	if (fp == NULL) // 파일 열기 오류
+		printf("점수 기록 파일 작성 실패!\n\n");
+	else
+	{
+		fprintf(fp, "%.2lf\n", sec); // 점수 기록
+		fclose(fp);
+	}
+	printf("아무키나 누르면 메인메뉴로 이동합니다.\n");
+	printf("메인메뉴가 나타나지 않으면 한번 더 입력해주세요.");
+	getch();
 }
 
 #endif
