@@ -50,6 +50,13 @@ void savedrecord(){
 	printf("\n\n아무키나 누르면 메인메뉴로 이동합니다.");
 	getch();
 }
+
+//sets time limit for playing game
+void sett(){
+	
+}
+
+
 void deletesave(){
 
 }
