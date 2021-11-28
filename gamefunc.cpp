@@ -71,7 +71,7 @@ void set_time() {
 	pos;
 	pos;
 	printf("press 1 for Easy") ;pos;
-	printf("press 2 for Medium"); pos;
+	printf("press 2 for Intermediate"); pos;
 	printf("press 3 for Hard");pos;
 	printf("press 4 for Extremely Hard");pos;
 	scanf("%d",&ch);
