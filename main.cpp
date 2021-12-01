@@ -9,8 +9,10 @@
 
 using namespace std;
 
-int main()
-{
+int main(){
+	int i, j, k;
+	cin >> i >> j >> k;
+	
 	do{
 		system("cls");
     	cout << "Speedy Type Game" << endl;
