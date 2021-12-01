@@ -12,11 +12,13 @@ void accuracy(){
 	int inc_word = 0;
 	if (c_word != g_word)
 		++inc_word;
-	percent=0;
 	
-	percent=g_size-inc_word;
-	percent=percent/g_word;
-	percent=percent*100;
+	double accuracy;
+	accuracy=0;
+	
+	accuracy=g_size-inc_word;
+	accuracy=accuracy/g_word;
+	accuracy=accuracy*100;
 	
 }
 
