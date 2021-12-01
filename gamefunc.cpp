@@ -1,32 +1,6 @@
 #ifndef GAMEFUNC_H
 #define GAMEFUNC_H
 
-//function to measure current user accuracy
-void accuracy() {
-	int c_word;
-	int inc_word = 0;
-	if (c_word != g_word)
-		++inc_word;
-
-	accuracy = g_word - inc_word; //incorrect word 
-	accuracy = accuracy / g_wordTotal; //전체 게임출제단어 array 크기구해서 나누기
-	accuracy = accuracy * 100;
-
-}
-
-//function to measure user typing speed
-void typingspeed() {
-	using Clock = chrono::high_resolution_clock;
-	cout << "Type: ";
-	cin >> string answer;
-	auto start = Clock::now();
-	cin >> answer;
-	auto end = Clock::now();
-	auto s = chrono::duration_cast<chrono::seconds>(end - start).count();
-
-	cout << "You took " << s << " seconds" << endl;  //print user input time for the previous chance
-}
-}
 
 //help() is to show the instructions of the game
 void help() {
@@ -40,25 +14,11 @@ void help() {
 	getche();
 }
 
-//saverecord() can display user's highest score, acculmulative average accuracy, average typing speed.
+//saverecord() can display acculmulative average accuracy, average typing speed.
 void savedrecord() {
-	FILE *fp2 = NULL;
-	double s;
-	int cnt;
-	system("cls");
-	printf("[ 점수 ]\n\n\n");
-	fp2 = fopen("score.txt", "r");
-	if (fp2 == NULL) // 파일 열기 오류
-		printf("한번도 게임을 하신적이 없거나,\n점수 파일을 불러오는데 문제가 있습니다.\n");
-	else
-	{
-		cnt = 1;
-		while (EOF != fscanf(fp2, "%lf", &s))
-		{
-			printf("%d. %.2lf초\n", cnt, s);
-			cnt++;
-		}
-	}
+	ifstream fin("output.txt");
+
+
 	printf("\n\n아무키나 누르면 메인메뉴로 이동합니다.");
 	getch();
 }
@@ -68,27 +28,8 @@ void deletesave() {
 }
 
 void game() {
-	int timelimit;
+	
 	int word = 30;
-
-	//Difficulty setting (adjusting time limit for each word)
-	system("cls");
-	cout << "Select difficulty of the game:" << endl;
-	cout << "1 Easy" << endl;
-	cout << "2 Intermediate" << endl;
-	cout << "3 Hard" << endl;
-	cout << "4 Extremely Hard" << endl;
-	cout << "Select Number: "
-	char difficulty = getche();
-	switch (difficulty)
-	{
-	case '1':timelimit = 1; break;
-	case '2':timelimit = 2; break;
-	case '3':timelimit = 3; break;
-	case '4':timelimit = 4; break;
-	default:game();
-	}
-
 	//Word number setting (default: 30 words, can be varied to 20 or 40)
 	system("cls");
 	cout << "Select numbers of words you want to challenge:" << endl;
@@ -104,7 +45,7 @@ void game() {
 	default:break;
 	}
 
-	//File input of the word lists - 520 words(20 words for each alphabet) - use of dynamic array
+	//File input of the word lists - 520 words (20 words for each alphabet) - use of dynamic array
 	ifstream fin("input.txt");
 	vector<string> wordlist;
 	string word;
@@ -115,10 +56,11 @@ void game() {
 	int totalword = 0;
 	int correctword = 0;
 	float totaltime = 0;
-	float starttime, endtime;
+	int accuracy, typingspeed;
+	float starttime, timediff;
 
-	//boolean variable to determine whether it is game over or stage success from the user
-	bool success = false;
+	//counter variable to determine whether it is game over or stage success from the user
+	int success = 0;
 
 	//Actual game function
 	do{
@@ -129,33 +71,67 @@ void game() {
 
 		cout << testingt << endl;
 		string userinput;
-		do {
-			float point = clock() / CLOCKS_PER_SEC;
-			if ((point - starttime) >= timelimit)
-				break;
-		} while (input 받을때까지); //apply time limit while user input (다시 돌아와서 구현)
-		if () {
-			
-		}
-		else {
-			
-		}
+		cin >> userinput;
+		timediff = clock() - starttime;
 
+		int counter = 0; //counting correct characters
+		if (testingt.length() == userinput.length()) { //if the user input is same length with word to test
+			totalword += testingt.length();
+			for (int i = 0; i < testingt.length(); i++) {
+				if(testingt[i] == userinput[i])
+					correctword++;
+			}
+		}
+		else if (testingt.length() > userinput.length()) { //if the user input is shorter than word to test
+			totalword += testingt.length();
+			for (int i = 0; i < testingt.length(); i++) {
+				if (testingt[i] == userinput[i] && i < userinput.length())
+					correctword++;
+			}
+		}
+		else { //if the user input is longer than word to test
+			totalword += userinput.length();
+			for (int i = 0; i < testingt.length(); i++) {
+				if (testingt[i] == userinput[i])
+					correctword++;
+			}
+		}
+		counter++;
 
-		endtime = clock() - starttime;
+		totaltime += timediff;
+		accuracy = (correctword / totalword) *100;
+		typingspeed = totalword / timediff
+
+		cout << endl;
+		cout << "Cumulative average accuracy of the session: " << accuracy << endl;
+		cout << "Average typing speed of the session: " << typingspeed << endl;
+		cout << "Time taken for this word: " << timediff << endl;
 		delay(1sec);
-	} while (); //termination condition ()
+	} while (accuracy < 70 || counter < word); //termination condition - if accuracy falls below 70% or user finish all set of words
 
 	system("cls");
-	cout << "Game Over" << endl;
-	fp = fopen("score.txt", "a"); // 점수 저장 파일 열기
-	if (fp == NULL) // 파일 열기 오류
-		printf("점수 기록 파일 작성 실패!\n\n");
-	else
-	{
-		fprintf(fp, "%.2lf\n", sec); // 점수 기록
-		fclose(fp);
+	if (counter < word) { //if-else statement determinining game over by accuracy or stage clear finishing whole set of words
+		cout << "Game Over" << endl;
 	}
+	else {
+		cout << "Stage Clear" << endl;
+	}
+	cout << endl;
+	cout << "Result of this session" << endl;
+	cout << "----------------------" << endl;
+	cout << "Cumulative average accuracy of the session: " << accuracy << endl;
+	cout << "Average typing speed of the session: " << typingspeed << endl;
+	cout << "Time taken for whole session: " << totaltime << endl;
+
+	ifstream fin("output.txt");
+	ofstream fout("output.txt");
+	if (fin == NULL) {
+
+	}
+	else {
+
+	}
+
 	printf("아무키나 누르면 메인메뉴로 이동합니다.\n");
 	printf("메인메뉴가 나타나지 않으면 한번 더 입력해주세요.");
 	getch();
