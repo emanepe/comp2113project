@@ -3,7 +3,11 @@
 
 //function to calculate current user score
 void score(){
-
+	struct User{
+		string name;
+		int scores[5];
+		int numScores;
+}
 }
 
 //function to measure current user accuracy
@@ -13,11 +17,8 @@ void accuracy(){
 	if (c_word != g_word)
 		++inc_word;
 	
-	double accuracy;
-	accuracy=0;
-	
-	accuracy=g_size-inc_word;
-	accuracy=accuracy/g_word;
+	accuracy=g_word-inc_word; //incorrect word 
+	accuracy=accuracy/g_wordTotal; //전체 게임출제단어 array 크기구해서 나누기
 	accuracy=accuracy*100;
 	
 }
