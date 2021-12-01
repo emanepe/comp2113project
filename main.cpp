@@ -10,9 +10,6 @@
 #include "gamefunc.h"
 
 
-#define DELAY 5000 // 바꿔야됨  
-
-
 using namespace std;
 
 
