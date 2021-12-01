@@ -25,9 +25,7 @@ int * ReturnRandomWords(){ //단어추출 바꿔야됨
         WordsFromFile.push(current);
     }while(!words.eof());
     words.close();
-    string v1 = WordsFromFile.at( rand() % WordsFromFile.size());  
-    string v2 = WordsFromFile.at( rand() % WordsFromFile.size());   
-    string v3 = WordsFromFile.at( rand() % WordsFromFile.size()));
+    string v1 = WordsFromFile.at( rand() % WordsFromFile.size());  //if user == line, again 불러오기
     string arr [3] = {v1, v2, v3};
     return arr;
 }
