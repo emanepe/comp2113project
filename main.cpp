@@ -42,7 +42,7 @@ int main(){
       		default:main();
     	}
 	}while(1);
-		x = 조건; 단어 입력 똑같아야됨;    // 
+		x = 조건; 유저인풋이랑 단어같아야됨;    // 
 		old_time = clock();    // 시작 시간 
         	use_inp = 1;         // 키입력 초기값 
  
@@ -67,5 +67,5 @@ int main(){
             printf("Incorrect, \n total correct is \n", sum, yes);
             return 0;
         } 
-        yes++;    // 정답수 
+        yes++;  // 맞힌갯수
 }
