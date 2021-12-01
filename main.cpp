@@ -15,6 +15,25 @@
 
 using namespace std;
 
+
+int * ReturnRandomWords(){ //단어추출 바꿔야됨
+    string current;
+    vector<std::string> WordsFromFile
+    ifstream words("word_db.txt");
+    do{
+        getline(words,current);
+        WordsFromFile.push(current);
+    }while(!words.eof());
+    words.close();
+    string v1 = WordsFromFile.at( rand() % WordsFromFile.size());  
+    string v2 = WordsFromFile.at( rand() % WordsFromFile.size());   
+    string v3 = WordsFromFile.at( rand() % WordsFromFile.size()));
+    string arr [3] = {v1, v2, v3};
+    return arr;
+}
+
+
+
 int main(){
 	int x, y, sum, answer;
 	int yes;
