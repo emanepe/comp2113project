@@ -1,6 +1,6 @@
 FLAGS = -pedantic-errors -std=c++11
 
-d2boh.o: gamefunc.cpp gamefunc.h
+gamefunc.o: gamefunc.cpp gamefunc.h
 	g++ $(FLAGS) -c $<
 
 main.o: main.cpp gamefunc.h
