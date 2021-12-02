@@ -9,8 +9,6 @@ using namespace std;
 class gamefunc{
 public:
 
-  string ;
-
   void help();
   
   void savedrecord();
@@ -18,6 +16,7 @@ public:
   void deletesave();
   
   void game();
+  
 };
 
 #endif
