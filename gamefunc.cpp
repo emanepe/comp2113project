@@ -1,6 +1,4 @@
-#ifndef GAMEFUNC_H
-#define GAMEFUNC_H
-
+//all of the functions
 
 //help() is to show the instructions of the game
 void help() {
@@ -11,20 +9,32 @@ void help() {
 	cout << "User has to type a given word within time limit, maintaining certain level of accuracy." << endl;
 	cout << "User can also view their highest record, and this can be reset if the user want." << endl;
 	cout << "Please enjoy and type any key to exit: ";
-	getche();
+	getchar();
 }
 
 //saverecord() can display acculmulative average accuracy, average typing speed.
 void savedrecord() {
 	ifstream fin("output.txt");
+	int storedtotal, storedcorrect;
+	float storedtime;
+	fin >> storedtotal >> storedcorrect >> storedtime;
+	int accuracy = (storedcorrect / storedtotal) * 100;
+	int typingspeed = storedtotal / storedtime;
 
-
-	printf("\n\n아무키나 누르면 메인메뉴로 이동합니다.");
-	getch();
+	cout << endl;
+	cout << "User Cumulative Performance" << endl;
+	cout << "---------------------------" << endl;
+	cout << "Cumulative average accuracy of the user: " << accuracy << endl;
+	cout << "Average typing speed of the user: " << typingspeed << endl;
+	fin.close();
+	cout << "Please enjoy and type any key to exit: ";
+	getchar();
 }
 
 void deletesave() {
-	//tranche
+	ofstream fout("output.txt", std::ios::out | std::ios::trunc);
+	fout.close();
+	getchar();
 }
 
 void game() {
@@ -37,7 +47,7 @@ void game() {
 	cout << "2 30 words" << endl;
 	cout << "3 40 words" << endl;
 	cout << "Select Number: "
-	char userword = getche();
+	char userword = getchar();
 	switch (userword)
 	{
 	case '1':word = 20; break;
@@ -100,13 +110,13 @@ void game() {
 
 		totaltime += timediff;
 		accuracy = (correctword / totalword) *100;
-		typingspeed = totalword / timediff
+		typingspeed = totalword / timediff;
 
 		cout << endl;
 		cout << "Cumulative average accuracy of the session: " << accuracy << endl;
 		cout << "Average typing speed of the session: " << typingspeed << endl;
 		cout << "Time taken for this word: " << timediff << endl;
-		delay(1sec);
+		delay(1sec); // 여기 다시 보기
 	} while (accuracy < 70 || counter < word); //termination condition - if accuracy falls below 70% or user finish all set of words
 
 	system("cls");
@@ -123,18 +133,24 @@ void game() {
 	cout << "Average typing speed of the session: " << typingspeed << endl;
 	cout << "Time taken for whole session: " << totaltime << endl;
 
-	ifstream fin("output.txt");
-	ofstream fout("output.txt");
-	if (fin == NULL) {
-
+	fstream file("output.txt");
+	if (file == NULL) {
+		file << totalword << " " << correctword << " " << totaltime;
+		file.close();
 	}
 	else {
-
+		int storedtotal, storedcorrect;
+		float storedtime;
+		file >> storedtotal >> storedcorrect >> storedtime;
+		file.close();
+		ofstream fout("output.txt", std::ios::out | std::ios::trunc);
+		storedtotal += totalword;
+		storedcorrect += correctword;
+		storedtime += totaltime;
+		fout << storedtotal << " " << storedcorrect << " " << storedtime;
 	}
 
 	printf("아무키나 누르면 메인메뉴로 이동합니다.\n");
 	printf("메인메뉴가 나타나지 않으면 한번 더 입력해주세요.");
-	getch();
+	getchar();
 }
-
-#endif
