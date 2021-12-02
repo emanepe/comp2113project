@@ -1,57 +1,85 @@
-//all of the functions
+//list of functions needed for our games
+#include <iostream>
+#include <fstream>
+#include <ctime>
+#include <cstring>
+#include <cstdio>
+#include <cstdlib>
+#include <vector>
+#include <thread>
+#include <chrono>
+#include "gamefunc.h"
 
-//help() is to show the instructions of the game
+using namespace std;
+
+//help() shows the instructions of the game
 void help() {
-	system("cls");
+	system("clear");
 	cout << "This is a game designed to improve your typing speed." << endl;
 	cout << "User can select appropriate difficulties with different time limits." << endl;
 	cout << "User can also choose numbers of word to challenge. (20, 30, 40 words)" << endl;
 	cout << "User has to type a given word within time limit, maintaining certain level of accuracy." << endl;
+	cout << "All input is case sensitive." << endl;
 	cout << "User can also view their highest record, and this can be reset if the user want." << endl;
-	cout << "Please enjoy and type any key to exit: ";
-	getchar();
+	cout << "Please enjoy and type 'e' and enter key to exit" << endl;
+	char x;
+	do{
+		cin >> x;
+	}while(x != 'e');
 }
 
 //saverecord() can display acculmulative average accuracy, average typing speed.
-void savedrecord() {
+void savedrecord() {;
 	ifstream fin("output.txt");
-	int storedtotal, storedcorrect;
-	float storedtime;
-	fin >> storedtotal >> storedcorrect >> storedtime;
-	int accuracy = (storedcorrect / storedtotal) * 100;
-	int typingspeed = storedtotal / storedtime;
+	if (fin.peek() == EOF) {
+		cout << "No Previous Record" << endl;
+	}
+	else{
+		int storedtotal, storedcorrect;
+		float storedtime;
+		fin >> storedtotal >> storedcorrect >> storedtime;
+		int accuracy = storedcorrect * 100 / storedtotal;
+		int typingspeed = storedtotal / storedtime;
 
-	cout << endl;
-	cout << "User Cumulative Performance" << endl;
-	cout << "---------------------------" << endl;
-	cout << "Cumulative average accuracy of the user: " << accuracy << endl;
-	cout << "Average typing speed of the user: " << typingspeed << endl;
+		cout << endl;
+		cout << "User Cumulative Performance" << endl;
+		cout << "---------------------------" << endl;
+		cout << "Cumulative average accuracy of the session: " << accuracy << " percent" << endl;
+		cout << "Average typing speed of the session: " << typingspeed << " characters per minute (cpm)" << endl;
+	}
 	fin.close();
-	cout << "Please enjoy and type any key to exit: ";
+	cout << "Type any key to exit" << endl;
 	getchar();
 }
 
 void deletesave() {
-	ofstream fout("output.txt", std::ios::out | std::ios::trunc);
-	fout.close();
-	getchar();
+	cout << "Are you sure? (Please reply with y or n): " << endl;
+	char yn;
+	cin >> yn;
+	if (yn == 'y'){
+		ofstream fout("output.txt", std::ios::out | std::ios::trunc);
+		fout.close();
+		cout << "Success!";
+	}
+	chrono::milliseconds duration(1000);
+	this_thread::sleep_for(duration);
 }
 
 void game() {
-	
-	int word = 30;
-	//Word number setting (default: 30 words, can be varied to 20 or 40)
-	system("cls");
+	int wordnum = 20;
+	//Word number setting (default: 20 words, can be varied to 10 or 30)
+	system("clear");
 	cout << "Select numbers of words you want to challenge:" << endl;
-	cout << "1 20 words" << endl;
-	cout << "2 30 words" << endl;
-	cout << "3 40 words" << endl;
-	cout << "Select Number: "
-	char userword = getchar();
+	cout << "1 10 words" << endl;
+	cout << "2 20 words" << endl;
+	cout << "3 30 words" << endl;
+	cout << "Select Number: ";
+	char userword;
+	cin >> userword;
 	switch (userword)
 	{
-	case '1':word = 20; break;
-	case '2':word = 40; break;
+	case '1':wordnum = 10; break;
+	case '2':wordnum = 30; break;
 	default:break;
 	}
 
@@ -70,58 +98,66 @@ void game() {
 	float starttime, timediff;
 
 	//counter variable to determine whether it is game over or stage success from the user
-	int success = 0;
+	int counter = 0;
 
 	//Actual game function
 	do{
-		system(:"cls");
 		starttime = clock(); //record starting time
+		system("clear");
+		srand(time(0)); //random seed value setting
 		int randindex = rand() % wordlist.size(); //randomly select index to choose a word to test
-		string testingt = wordlist(randindex);
+		string testingt = wordlist[randindex];
 
 		cout << testingt << endl;
 		string userinput;
 		cin >> userinput;
-		timediff = clock() - starttime;
+		timediff = (clock() - starttime)/100;
 
-		int counter = 0; //counting correct characters
 		if (testingt.length() == userinput.length()) { //if the user input is same length with word to test
-			totalword += testingt.length();
+			totalword += testingt.length() - 1;
 			for (int i = 0; i < testingt.length(); i++) {
-				if(testingt[i] == userinput[i])
+				if(testingt[i] == userinput[i]){
 					correctword++;
+				}
 			}
 		}
 		else if (testingt.length() > userinput.length()) { //if the user input is shorter than word to test
-			totalword += testingt.length();
+			totalword += testingt.length() - 1;
 			for (int i = 0; i < testingt.length(); i++) {
-				if (testingt[i] == userinput[i] && i < userinput.length())
+				if (testingt[i] == userinput[i] && i < userinput.length()){
 					correctword++;
+				}
 			}
 		}
-		else { //if the user input is longer than word to test
+		else { //if the user input is longer than word to test //ajik
 			totalword += userinput.length();
 			for (int i = 0; i < testingt.length(); i++) {
-				if (testingt[i] == userinput[i])
+				if (testingt[i] == userinput[i]){
 					correctword++;
+				}
 			}
 		}
 		counter++;
 
 		totaltime += timediff;
-		accuracy = (correctword / totalword) *100;
-		typingspeed = totalword / timediff;
+		accuracy = correctword * 100 / totalword; //accuracy in percentage
+		typingspeed = totalword * 60 / totaltime;
+
+		cout << totalword << " " << correctword;
 
 		cout << endl;
-		cout << "Cumulative average accuracy of the session: " << accuracy << endl;
-		cout << "Average typing speed of the session: " << typingspeed << endl;
-		cout << "Time taken for this word: " << timediff << endl;
-		delay(1sec); // 여기 다시 보기
-	} while (accuracy < 70 || counter < word); //termination condition - if accuracy falls below 70% or user finish all set of words
+		cout << "Cumulative average accuracy of the session: " << accuracy << " percent" << endl;
+		cout << "Average typing speed of the session: " << typingspeed << " characters per minute (cpm)" << endl;
+		cout << "Time taken for this word: " << timediff << " seconds" << endl;
 
-	system("cls");
-	if (counter < word) { //if-else statement determinining game over by accuracy or stage clear finishing whole set of words
+		chrono::milliseconds duration(1000);
+		this_thread::sleep_for(duration);
+	} while (accuracy > 70 && counter < wordnum); //termination condition - if accuracy falls below 70% or user finish all set of words
+
+	system("clear");
+	if (counter < wordnum) { //if-else statement determinining game over by accuracy or stage clear finishing whole set of words
 		cout << "Game Over" << endl;
+		cout << "Your accuracy below 70 percent!" << endl;
 	}
 	else {
 		cout << "Stage Clear" << endl;
@@ -129,12 +165,12 @@ void game() {
 	cout << endl;
 	cout << "Result of this session" << endl;
 	cout << "----------------------" << endl;
-	cout << "Cumulative average accuracy of the session: " << accuracy << endl;
-	cout << "Average typing speed of the session: " << typingspeed << endl;
-	cout << "Time taken for whole session: " << totaltime << endl;
+	cout << "Cumulative average accuracy of the session: " << accuracy << " percent" << endl;
+	cout << "Average typing speed of the session: " << typingspeed << " characters per minute (cpm)" << endl;
+	cout << "Time taken for whole session: " << totaltime << " seconds" << endl;
 
 	fstream file("output.txt");
-	if (file == NULL) {
+	if (file.peek() == EOF) {
 		file << totalword << " " << correctword << " " << totaltime;
 		file.close();
 	}
@@ -143,14 +179,16 @@ void game() {
 		float storedtime;
 		file >> storedtotal >> storedcorrect >> storedtime;
 		file.close();
-		ofstream fout("output.txt", std::ios::out | std::ios::trunc);
+		ofstream fout("output.txt", ios::out | ios::trunc);
 		storedtotal += totalword;
 		storedcorrect += correctword;
 		storedtime += totaltime;
 		fout << storedtotal << " " << storedcorrect << " " << storedtime;
 	}
 
-	printf("아무키나 누르면 메인메뉴로 이동합니다.\n");
-	printf("메인메뉴가 나타나지 않으면 한번 더 입력해주세요.");
-	getchar();
+	cout << "Press 'e' and enter key to go back to main menu: " << endl;
+	char x;
+	do{
+		cin >> x;
+	}while(x != 'e');
 }
