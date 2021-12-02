@@ -5,17 +5,12 @@
 #include <iostream>
 using namespace std;
 
-class gamefunc{
-public:
+void help();
+  
+void savedrecord();
 
-  void help();
+void deletesave();
   
-  void savedrecord();
-  
-  void deletesave();
-  
-  void game();
-  
-};
+void game();
 
 #endif
