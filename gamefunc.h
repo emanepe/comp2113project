@@ -1,7 +1,6 @@
 #ifndef GAMEFUNC_H
 #define GAMEFUNC_H
 
-#include <string>
 #include <cstdlib>
 #include <iostream>
 using namespace std;
