@@ -16,7 +16,6 @@ Input
    - File Input
      - Dictionary including words
      - Previous Scores
-       - Highest Score for one session
        - Higest Accuracy
        - Higest Speed
    - User Input for searching words
@@ -50,6 +49,3 @@ Game Termination Conditions
    - Put all files in same directory then open cmd then type these two commands.
      - g++ -pedantic-errors -std=c++11 main.cpp gamefunc.cpp -o main
      - ./main
-	
-**Video Explaination**
-   1. 
