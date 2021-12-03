@@ -16,7 +16,7 @@ Jong Seung Lee 3035555547
 
 **Requirements**
 1. Generation of Random game sets or events:
-Random words are extracted from the input.txt file to be tested by the user
+	Random words are extracted from the input.txt file to be tested by the user
 
 2. Data structure for storing game status:
 
