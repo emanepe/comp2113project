@@ -31,7 +31,7 @@ Jong Seung Lee 3035555547
    - All presented inside the code files
 
 **How to run**
-   - Put all files in same directory then open cmd then type these two commands.
+   - Put all files in same directory then open cmd then type these two commands consequently.
      - g++ -pedantic-errors -std=c++11 main.cpp gamefunc.cpp -o main
      - ./main
 
