@@ -3,10 +3,15 @@ Minjae Jo 3035742712
 Jong Seung Lee 3035555547
   
 **Typing Game Brief Description**
-   - The game is aimed to improve the typing speed for the random words and the reaction speed.
+   - The game is aimed to improve the typing speed for the random words.
 
 **Rules**
-
+	 1. User first select numbers of word for the session. It can be 
+	cout << "User can also choose numbers of word to challenge. (10, 20, 30 words)" << endl;
+	cout << "User has to type a given word maintaining at least 70% accuracy." << endl;
+	cout << "All inputs Are case sensitive." << endl;
+	cout << "User can also view their cumulative record. (can be reset)" << endl;
+	cout << "Please enjoy and type 'e' and enter key to exit" << endl;
 Input
    - File Input
      - Dictionary including words
@@ -41,6 +46,7 @@ Game Termination Conditions
    - Must follow the time limit or will lose.
    - Exit the session if user type 'q' after the game.
 
-Restriction
-* cannot use any library that needs to be downloaded from internet.
-* need to be complied to academy server - test with X2go.
+**How to run**
+   - Put all files in same directory then open cmd then type these two commands.
+     g++ -pedantic-errors -std=c++11 main.cpp gamefunc.cpp -o main
+     ./main
