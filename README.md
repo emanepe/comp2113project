@@ -13,6 +13,8 @@ Jong Seung Lee 3035555547
 	cout << "User can also view their cumulative record. (can be reset)" << endl;
 	cout << "Please enjoy and type 'e' and enter key to exit" << endl;
 
+
+**Requirements**
 1. Generation of Random game sets or events:
 
 2. Data structure for storing game status:
