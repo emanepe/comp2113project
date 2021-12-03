@@ -13,7 +13,7 @@ Jong Seung Lee 3035555547
    3. If the user fails, then it's game over
    4. Else, the game will end if the user finishes all the entries of the word
    5. For each entries and end of the game session, accuracy, typing speed and time taken will be shown 
-   * Remeber that all inputs are case-sensitive.
+   (Remeber that all inputs are case-sensitive.)
 
 **Requirements**
 
