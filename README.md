@@ -16,19 +16,22 @@ Jong Seung Lee 3035555547
 
 **Requirements**
 1. Generation of Random game sets or events:
-	Random words are extracted from the input.txt file to be tested by the user
-
+   - Random words are extracted from the input.txt file to be tested by the user.
+   - 
 2. Data structure for storing game status:
+   - R.
 
 3. Dynamic memory management:
+   - Random words are extracted from the input.txt file to be tested by the user.
 
 4. File I/O:
+   - Random words are extracted from the input.txt file to be tested by the user.
 
 5. Program codes in multiple files:
+   - Random words are extracted from the input.txt file to be tested by the user.
 
 6. Proper indentation and naming styles, and In-code documentation:
-
-
+   - Random words are extracted from the input.txt file to be tested by the user.
 
 Input
    - File Input
