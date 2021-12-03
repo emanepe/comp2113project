@@ -6,9 +6,9 @@ Jong Seung Lee 3035555547
    - The game is aimed to improve the typing speed for the random words.
 
 **Rules**
-	 1. User first select numbers of word for the session. It can be 
-	cout << "User can also choose numbers of word to challenge. (10, 20, 30 words)" << endl;
-	cout << "User has to type a given word maintaining at least 70% accuracy." << endl;
+   1. User first select numbers of word for the session. It can be 
+   2. 2. "User can also choose numbers of word to challenge. (10, 20, 30 words)" << endl;
+   3. Then "User has to type a given word maintaining at least 70% accuracy." << endl;
 	cout << "All inputs Are case sensitive." << endl;
 	cout << "User can also view their cumulative record. (can be reset)" << endl;
 	cout << "Please enjoy and type 'e' and enter key to exit" << endl;
@@ -48,5 +48,5 @@ Game Termination Conditions
 
 **How to run**
    - Put all files in same directory then open cmd then type these two commands.
-   - g++ -pedantic-errors -std=c++11 main.cpp gamefunc.cpp -o main
-   - ./main
+     - g++ -pedantic-errors -std=c++11 main.cpp gamefunc.cpp -o main
+     - ./main
