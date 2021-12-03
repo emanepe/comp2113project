@@ -1,4 +1,4 @@
-# comp2113project
+# COMP2113 Project Typing Game
 Minjae Jo 3035742712
 Jong Seung Lee 3035555547
   
