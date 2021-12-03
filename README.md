@@ -17,22 +17,25 @@ Jong Seung Lee 3035555547
 **Requirements**
 1. Generation of Random game sets or events:
    - Random words are extracted from the input.txt file to be tested by the user.
-   - 
+
 2. Data structure for storing game status:
-   - R.
+   - Selection of difficulty (# of words to be tested in given amount of time)
+   - Recording user's accuracy rate, average typing speed per minute, and time taken per input
 
 3. Dynamic memory management:
-   - Random words are extracted from the input.txt file to be tested by the user.
+   - Used vector as dynamic memory structure to store all words
 
 4. File I/O:
-   - Random words are extracted from the input.txt file to be tested by the user.
+   - File input of the word text file
+   - Output textfile to append game results of totalword, correctword, and totaltime
 
 5. Program codes in multiple files:
-   - Random words are extracted from the input.txt file to be tested by the user.
+   - Two .cpp files and a header file is made
 
 6. Proper indentation and naming styles, and In-code documentation:
-   - Random words are extracted from the input.txt file to be tested by the user.
+   - All presented inside the code files
 
+**Code Features**
 Input
    - File Input
      - Dictionary including words
