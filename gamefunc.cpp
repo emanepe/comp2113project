@@ -18,8 +18,7 @@ void help() {
 	cout << "Instructions" << endl;
 	cout << "------------" << endl;
 	cout << "This is a game designed to improve your typing speed." << endl;
-	cout << "User can select appropriate difficulties with different time limits." << endl;
-	cout << "User can also choose numbers of word to challenge. (10, 20, 30 words)" << endl;
+	cout << "User can choose numbers of word to challenge. (10, 20, 30 words)" << endl;
 	cout << "User has to type a given word maintaining at least 70% accuracy." << endl;
 	cout << "All inputs Are case sensitive." << endl;
 	cout << "User can also view their cumulative record. (can be reset)" << endl;
